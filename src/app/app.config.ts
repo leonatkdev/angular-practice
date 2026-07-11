@@ -1,11 +1,13 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    // withComponentInputBinding() binds route params (e.g. :id) to
+    // matching component signal inputs automatically.
+    provideRouter(routes, withComponentInputBinding())
   ]
 };

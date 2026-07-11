@@ -1,0 +1,12 @@
+<section class="page">
+  @if (product(); as p) {
+    <h1>{{ p.name }}</h1>
+    <p class="price">${{ p.price }}</p>
+    <p>{{ p.description }}</p>
+  } @else {
+    <h1>Product not found</h1>
+    <p>There is no product with id "{{ id() }}".</p>
+  }
+
+  <a routerLink="/products">← Back to products</a>
+</section>

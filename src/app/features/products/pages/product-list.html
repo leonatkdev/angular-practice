@@ -1,0 +1,13 @@
+<section class="page">
+  <h1>Products</h1>
+  <p>Each link navigates to <code>/products/:id</code> — the <code>:id</code> is a route parameter.</p>
+
+  <ul class="product-list">
+    @for (product of products; track product.id) {
+      <li>
+        <a [routerLink]="[product.id]">{{ product.name }}</a>
+        <span>${{ product.price }}</span>
+      </li>
+    }
+  </ul>
+</section>
