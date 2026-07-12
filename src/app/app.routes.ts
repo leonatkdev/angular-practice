@@ -37,6 +37,8 @@ export const routes: Routes = [
   { path: 'two-way-practice', title: 'Two-way', loadComponent: () => import('./features/two-way-practice/pages/two-way-practice').then((m) => m.TwoWayPractice) },
   { path: 'shared-store-practice', title: 'Shared Store', loadComponent: () => import('./features/shared-store-practice/pages/shared-store-practice').then((m) => m.SharedStorePractice) },
   { path: 'computed-effect-practice', title: 'Computed & Effect', loadComponent: () => import('./features/computed-effect-practice/pages/computed-effect-practice').then((m) => m.ComputedEffectPractice) },
+  { path: 'reactive-forms-practice', title: 'Reactive Forms', loadComponent: () => import('./features/reactive-forms-practice/pages/reactive-forms-practice').then((m) => m.ReactiveFormsPractice) },
+  { path: 'pipes-practice', title: 'Pipes', loadComponent: () => import('./features/pipes-practice/pages/pipes-practice').then((m) => m.PipesPractice) },
   { path: 'state-input', title: 'State Input', loadComponent: () => import('./features/state-input/pages/state-input').then((m) => m.StateInput) },
 
   // Wildcard: matches anything that fell through above (404).
