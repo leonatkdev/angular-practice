@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router'
 
 @Component({
     selector: 'app-state-practice',
-    imports: [RouterLink, RouterLinkActive],
+    // imports: [RouterLink, RouterLinkActive],
     template: `
       <div class='state-practice'>
         <h1>State Practice</h1>
