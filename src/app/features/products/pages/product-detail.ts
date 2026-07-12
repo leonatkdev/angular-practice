@@ -7,6 +7,7 @@ import { Products } from '../services/products';
   imports: [RouterLink],
   templateUrl: './product-detail.html',
 })
+
 export class ProductDetail {
   private readonly productsService = inject(Products);
 

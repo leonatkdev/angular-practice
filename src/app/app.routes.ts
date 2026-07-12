@@ -34,6 +34,7 @@ export const routes: Routes = [
   },
   { path: 'state-practice', loadComponent: () => import('./features/state-practice/pages/state-practice').then((m) => m.StatePractice) },
   { path: 'input-practice', title: 'Input', loadComponent: () => import('./features/input-practice/pages/input-practice').then((m) => m.InputPractice) },
+  { path: 'state-input', title: 'State Input', loadComponent: () => import('./features/state-input/pages/state-input').then((m) => m.StateInput) },
 
   // Wildcard: matches anything that fell through above (404).
   {

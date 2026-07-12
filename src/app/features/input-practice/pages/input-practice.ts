@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core'
 import { UserCard } from '../components/user-card'
+import { EditableField } from '../components/editable-field'
 
 @Component({
     selector: 'app-input-practice',
-    // We must import the child component to use <app-user-card> in the template.
-    imports: [UserCard],
+    // We must import each child component to use its tag in the template.
+    imports: [UserCard, EditableField],
     template: `
       <div class='input-practice'>
         <h1>Input & Output Practice</h1>
@@ -28,6 +29,20 @@ import { UserCard } from '../components/user-card'
             (remove)="onRemove($event)"
           />
         }
+
+        <hr />
+
+        <h2>Two-way binding with model()</h2>
+
+        <!-- [(value)] is the "banana in a box". It's just sugar for:
+             [value]="draft()" (valueChange)="draft.set($event)".
+             So editing in the CHILD updates draft here, and... -->
+        <app-editable-field [(value)]="draft" />
+
+        <!-- ...changing draft HERE flows straight back down into the child.
+             One source of truth, kept in sync in both directions. -->
+        <p>Parent's draft: {{ draft() }}</p>
+        <button (click)="draft.set('Hello from parent')">Set from parent</button>
       </div>
     `
 })
@@ -38,6 +53,10 @@ export class InputPractice {
     // State driven BY the child's events — proof the events reached the parent.
     protected readonly users = signal<string[]>(['Leo', 'Ada']);
     protected readonly lastEvent = signal('none');
+
+    // Two-way bound to the child's model(). Angular keeps this signal and
+    // the child's value() in sync automatically via [(value)].
+    protected readonly draft = signal('');
 
     // Handlers receive the payload the child emitted.
     protected onCheer(name: string): void {
