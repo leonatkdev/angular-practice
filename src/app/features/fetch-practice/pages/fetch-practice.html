@@ -1,0 +1,33 @@
+<h1>Product Search</h1>
+<p class="hint">Type to search the DummyJSON API (debounced, cancels stale requests).</p>
+
+<input
+  class="search"
+  type="search"
+  placeholder="Try 'phone', 'laptop', 'watch'…"
+  (input)="onInput($any($event.target).value)"
+/>
+
+<!-- The async pipe subscribes to state$ and unsubscribes automatically.
+     'as vm' aliases the latest emission so we can read it multiple times. -->
+@if (state$ | async; as vm) {
+  @if (vm.loading) {
+    <p class="status">Loading…</p>
+  } @else if (vm.error) {
+    <p class="status error">Something went wrong. Try again.</p>
+  } @else if (vm.products.length === 0) {
+    <p class="status">No results. Start typing above.</p>
+  } @else {
+    <ul class="results">
+      @for (product of vm.products; track product.id) {
+        <li class="card">
+          <img [src]="product.thumbnail" [alt]="product.title" />
+          <div>
+            <strong>{{ product.title }}</strong>
+            <span class="price">${{ product.price }}</span>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+}
